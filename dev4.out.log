@@ -1,0 +1,13 @@
+
+> fastrack-agile@0.1.0 dev
+> next dev
+
+   ▲ Next.js 15.5.4
+   - Local:        http://localhost:3942
+   - Network:      http://192.168.29.7:3942
+
+ ✓ Starting...
+ ✓ Ready in 2.4s
+ ○ Compiling / ...
+ ✓ Compiled / in 7s (546 modules)
+ GET / 200 in 7842ms
