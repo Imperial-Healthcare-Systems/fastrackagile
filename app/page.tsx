@@ -15,6 +15,14 @@ import { MARKUP } from "./markup";
 export default function Page() {
   useEffect(() => {
     if (document.getElementById("fastrack-runtime")) return;
+    // Question bank for the Open Assessment (sets window.SCRUM_QA). Loaded as a
+    // classic script before the module runtime; the assessment reads it lazily.
+    if (!document.getElementById("fastrack-questions")) {
+      const q = document.createElement("script");
+      q.id = "fastrack-questions";
+      q.src = "/questions.js";
+      document.body.appendChild(q);
+    }
     const s = document.createElement("script");
     s.id = "fastrack-runtime";
     s.type = "module";
