@@ -1120,4 +1120,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible,
 .st-close{position:absolute;top:18px;right:22px;width:44px;height:44px;border:none;border-radius:50%;background:rgba(255,255,255,.16);color:#fff;font-size:1.7rem;line-height:1;cursor:pointer;transition:background .15s ease}
 .st-close:hover{background:rgba(255,255,255,.3)}
 @media(max-width:600px){.st-grid{columns:2 150px;column-gap:10px}.st-tile{margin-bottom:10px}}
+.st-empty{display:none;max-width:520px;margin:44px auto;text-align:center;padding:42px 28px;border:1px dashed var(--line);border-radius:18px;background:#fff}
+.st-empty-ic{font-size:2.4rem;margin-bottom:.5rem}
+.st-empty p{margin:0}
 

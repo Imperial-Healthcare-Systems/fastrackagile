@@ -16,7 +16,7 @@ $exts = '.jpg', '.jpeg', '.png', '.webp'
 
 $imgs = Get-ChildItem -LiteralPath $dir -File |
         Where-Object { $exts -contains $_.Extension.ToLower() } |
-        Sort-Object Name
+        Sort-Object { if ($_.BaseName -match '^\d+') { '{0:D8}' -f [int]$Matches[0] } else { $_.BaseName } }
 
 if ($imgs.Count -eq 0) {
   Write-Host "No image files found in this folder. Copy your screenshots here first, then re-run." -ForegroundColor Yellow
