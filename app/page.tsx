@@ -15,6 +15,18 @@ import { MARKUP } from "./markup";
 export default function Page() {
   useEffect(() => {
     if (document.getElementById("fastrack-runtime")) return;
+    // Expose env config to the static runtime script (app.js can't read process.env).
+    // NEXT_PUBLIC_* values are inlined at build time by Next.
+    (window as unknown as { __FA_ENV?: Record<string, string> }).__FA_ENV = {
+      SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL || "",
+      SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "",
+      RAZORPAY_KEY_ID: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || "",
+      ADMIN_EMAIL: process.env.NEXT_PUBLIC_ADMIN_EMAIL || "",
+      WHATSAPP: process.env.NEXT_PUBLIC_WHATSAPP || "",
+      CALENDLY_URL: process.env.NEXT_PUBLIC_CALENDLY_URL || "",
+      CALL_FEE: process.env.NEXT_PUBLIC_CALL_FEE || "",
+      REGISTER_FEE: process.env.NEXT_PUBLIC_REGISTER_FEE || "",
+    };
     // Question bank for the Open Assessment (sets window.SCRUM_QA). Loaded as a
     // classic script before the module runtime; the assessment reads it lazily.
     if (!document.getElementById("fastrack-questions")) {

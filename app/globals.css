@@ -1165,6 +1165,12 @@ input:focus-visible,textarea:focus-visible,select:focus-visible,
 .post-cta{margin-top:2.4rem;padding-top:1.6rem;border-top:1px solid var(--line)}
 .bp-editor{max-width:760px}
 
+/* Admin login */
+.admin-auth{display:grid;place-items:center;min-height:calc(100vh - 88px);padding:40px 20px}
+.admin-login-card{max-width:400px;width:100%}
+.admin-login-card h2{font-family:'Fraunces';font-weight:600;font-size:1.6rem;margin-bottom:.3rem}
+.al-badge{display:inline-block;background:#0c1c33;color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.3rem .7rem;border-radius:999px;margin-bottom:1rem}
+
 /* ============================================================
    ABOUT PAGE
    ============================================================ */
