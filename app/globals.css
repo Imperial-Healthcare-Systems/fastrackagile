@@ -1247,3 +1247,68 @@ input:focus-visible,textarea:focus-visible,select:focus-visible,
 @media(max-width:860px){.detail-grid{grid-template-columns:1fr;gap:26px;padding-top:32px}.enroll-card{position:static}.spec-row{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:460px){.spec-row{grid-template-columns:1fr}}
 
+
+/* ============================================================
+   MOBILE OPTIMIZATION PASS (front-end polish)
+   ============================================================ */
+/* Never let anything cause sideways scroll on phones */
+html{overflow-x:clip}
+
+/* "Book a Call" button that lives in the header bar on mobile (hidden on desktop,
+   where the urgency-bar button is used instead) */
+.nav-book{display:none;align-items:center;gap:.35rem;background:var(--amber,#f5a623);color:#0c1c33;
+  font-weight:700;font-size:.82rem;line-height:1;padding:.5rem .85rem;border-radius:999px;
+  text-decoration:none;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.nav-book .ico{width:15px;height:15px}
+
+@media(max-width:760px){
+  /* Contact page: stack info + form (inline style forced 2 cols) */
+  .contact-grid{grid-template-columns:1fr !important;gap:26px !important;padding:12px 0 70px !important}
+}
+
+@media(max-width:640px){
+  /* Tighter vertical rhythm so pages aren't endless scrolls */
+  .sec-block{padding:54px 0}
+  .page-head{padding:44px 0 14px}
+  .page-head h1{font-size:clamp(1.9rem,7.5vw,2.4rem)}
+  .sec-head h2{font-size:1.7rem}
+  .footer-inner,.foot-main{gap:1.6rem}
+  /* Buttons: comfortable tap targets, full-width primary CTAs read better */
+  .hero2-cta{width:100%}
+  .hero2-cta .btn{flex:1;justify-content:center;min-height:46px}
+  .btn{min-height:44px}
+}
+
+@media(max-width:600px){
+  /* Urgency bar: single centered line — batch statement stays whole, then countdown.
+     "Book Your Call" moves out of here and into the header bar below. */
+  .urgency-bar{gap:.35rem .5rem;padding:.5rem .7rem;font-size:.72rem;text-align:center;flex-wrap:wrap;justify-content:center}
+  .urgency-bar .ub-live{display:none}
+  .urgency-bar .ub-cta{display:none}          /* button now lives in the nav */
+  .urgency-bar .ub-seg{justify-content:center;flex-wrap:wrap;gap:.3rem;color:#e7edf7}
+  .ub-batch{white-space:nowrap}
+  .countdown{gap:.22rem;white-space:nowrap}
+  .countdown .cd-box{min-width:1.55em;padding:.1rem .26rem}
+  /* Header bar: logo (left) + Book a Call & hamburger grouped (right) */
+  .nav{height:64px;padding-left:14px;padding-right:12px}
+  .nav .brand-logo{padding:9px 11px;gap:.35rem}
+  .logo-mark{height:30px}
+  .logo-text{height:18px}
+  .nav-book{display:inline-flex;margin-left:auto;margin-right:.55rem}
+  .menu-btn{font-size:1.5rem}
+}
+
+@media(max-width:520px){
+  /* A little more usable width on small phones */
+  .wrap{padding:0 18px}
+  .shell-body{padding:16px}
+  .panel{padding:20px}
+  .stat-row{grid-template-columns:1fr 1fr;gap:12px}
+  .qa-runhead{gap:.5rem}
+  .qa-timer{font-size:1.25rem;min-width:96px;padding:.3rem .7rem}
+}
+
+@media(max-width:400px){
+  .hero2 h1{font-size:2.05rem}
+  .stat-row{grid-template-columns:1fr}
+}
