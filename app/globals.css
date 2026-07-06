@@ -1183,7 +1183,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible,
 .abt-hero .eyebrow{display:block;margin-bottom:.35rem}
 .abt-hero h1{font-family:'Fraunces';font-weight:600;font-size:clamp(2.1rem,4.2vw,3rem);line-height:1.08;margin:.4rem 0 .8rem}
 .abt-hero .lede{max-width:660px;margin:0 auto;color:var(--ink-soft);font-size:1.12rem;line-height:1.65}
-.abt-alias{display:block;font-family:'Inter';font-weight:500;font-size:clamp(.85rem,1.7vw,1.05rem);color:var(--ink-soft);margin-top:.5rem;letter-spacing:.01em}
+.abt-alt{font-family:'Fraunces';font-weight:600;font-size:clamp(1.7rem,3.4vw,2.6rem);line-height:1.12;color:var(--amber-deep);margin:.4rem 0 .85rem}
 .abt-founder{display:grid;grid-template-columns:minmax(300px,400px) 1fr;gap:52px;align-items:start;padding:46px 0 8px}
 .abt-portrait-col{position:sticky;top:96px}
 .abt-portrait{position:relative;border-radius:20px;overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:4/5;background:var(--paper-2)}
