@@ -44,7 +44,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(251,248,242,.9);backdrop
 .nav .brand-logo:hover{transform:translateY(-1px);box-shadow:0 12px 26px rgba(12,28,51,.26)}
 .navlinks{display:flex;gap:1.05rem;font-size:.9rem;font-weight:500;white-space:nowrap}
 .navlinks a{color:var(--ink-soft)}.navlinks a:hover,.navlinks a.active{color:var(--ink)}
-.nav-cta{display:flex;gap:.7rem;align-items:center}
+.nav-cta{display:flex;gap:.7rem;align-items:center;margin-right:18px}
 .menu-btn{display:none}
 
 @media(max-width:940px){.navlinks{display:none}.nav-cta .btn-ghost{display:none}}
