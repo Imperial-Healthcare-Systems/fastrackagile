@@ -1132,6 +1132,11 @@ input:focus-visible,textarea:focus-visible,select:focus-visible,
 .bc-fee{font-family:'Fraunces';font-weight:700;font-size:2.4rem;color:var(--ink);line-height:1;margin-bottom:1.2rem}
 .bc-fee span{display:block;font-family:'Inter';font-weight:600;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-top:.2rem}
 .bc-note{font-size:.78rem;color:var(--ink-soft);margin-top:.8rem}
+/* Checkout details form inside the payment modal (register flow) */
+.pay-form{display:flex;flex-direction:column;gap:.55rem;margin:.1rem 0 1rem;text-align:left}
+.pay-form input{width:100%;padding:.72rem .85rem;border:1px solid var(--line);border-radius:11px;font-size:.95rem;font-family:inherit;color:var(--ink);background:#fff}
+.pay-form input::placeholder{color:var(--ink-soft)}
+.pay-form input:focus{outline:none;border-color:var(--amber,#f5a623);box-shadow:0 0 0 3px rgba(245,166,35,.16)}
 .contact-book{margin-top:.4rem;background:var(--paper-2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:.8rem;align-items:flex-start}
 .contact-book .btn{white-space:nowrap}
 
