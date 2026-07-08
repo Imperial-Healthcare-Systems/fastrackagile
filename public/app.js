@@ -1371,7 +1371,14 @@ async function viewAdmin(sub){
         <div class="field"><label for="bp-author">Author name</label><input id="bp-author" value="${esc(f.author||"")}" placeholder="e.g. Ram Choudry"></div>
         <div class="field"><label for="bp-slug">URL slug <span class="note">(leave blank to auto-generate)</span></label><input id="bp-slug" value="${esc(f.slug||"")}" placeholder="my-post-title"></div>
         <div class="field"><label for="bp-excerpt">Excerpt / summary</label><textarea id="bp-excerpt" rows="2" placeholder="One or two lines shown on the blog list">${esc(f.excerpt||"")}</textarea></div>
-        <div class="field"><label for="bp-cover">Cover image URL <span class="note">(optional)</span></label><input id="bp-cover" value="${esc(f.cover||"")}" placeholder="https://…"></div>
+        <div class="field"><label for="bp-cover">Cover image <span class="note">(optional)</span></label>
+          <input id="bp-cover" value="${esc(f.cover||"")}" placeholder="Paste an image URL, or upload below…">
+          <div style="display:flex;align-items:center;gap:.7rem;margin-top:.55rem;flex-wrap:wrap">
+            <label class="btn btn-ghost btn-sm" style="cursor:pointer;margin:0">⬆ Upload image<input id="bp-cover-file" type="file" accept="image/*" style="display:none"></label>
+            <span class="note" id="bp-cover-status"></span>
+          </div>
+          <div id="bp-cover-preview" style="margin-top:.6rem">${f.cover?`<img src="${esc(f.cover)}" alt="cover preview" style="max-height:120px;max-width:100%;border-radius:8px;border:1px solid var(--line)">`:""}</div>
+        </div>
         <div class="field"><label for="bp-body">Body</label><textarea id="bp-body" rows="12" placeholder="Write your post… Blank line = new paragraph · ## Heading · - list item · **bold**">${esc(f.body||"")}</textarea><div class="note" style="margin-top:.3rem">Formatting: blank line = paragraph, <b>## </b>heading, <b>### </b>sub-heading, <b>- </b>list item, <b>**bold**</b>.</div></div>
         <div class="ct-grid">
           <label>Status<select id="bp-status"><option value="draft"${f.status!=="published"?" selected":""}>Draft</option><option value="published"${f.status==="published"?" selected":""}>Published</option></select></label>
@@ -1419,7 +1426,7 @@ async function viewAdmin(sub){
         <div class="field"><label>Learner</label><select id="cert-user">${learners.map(l=>`<option value="${l.id}">${esc(l.full_name)} (${esc(l.email)})</option>`).join("")}</select></div>
         <div class="field"><label>Certificate title</label><input id="cert-title" value="ScrumStudy Certificate"></div>
         <div class="field"><label>Related course (optional)</label><select id="cert-course"><option value="">— none —</option>${COURSES.map(c=>`<option value="${c.id}">${esc(c.title)}</option>`).join("")}</select></div>
-        <div class="field"><label>Certificate file</label><input id="cert-file" type="file" accept=".pdf,image/*"><div class="note" style="margin-top:.3rem">${MODE==="demo"?"In demo, the file isn't stored — a sample link is saved so you can see the flow.":"Stored privately in Supabase Storage."}</div></div>
+        <div class="field"><label>Certificate file</label><input id="cert-file" type="file" accept=".pdf,image/*"><div class="note" style="margin-top:.3rem">${MODE==="demo"?"In demo, the file isn't stored — a sample link is saved so you can see the flow.":"PDF or image, up to 10 MB. Uploaded to Supabase Storage and linked in the learner's dashboard."}</div></div>
         <button class="btn btn-primary full-btn" id="cert-upload">Issue certificate</button>
       </div>
       <h2 class="shell-h" style="margin-top:2rem">Issued certificates</h2>${await certTable()}`;
@@ -1581,7 +1588,30 @@ function bindContentAdmin(){
 /* ---- Admin blog editor ---- */
 let _editingPost=null;
 function fmtLocalInput(ts){const d=new Date(ts);const p=n=>String(n).padStart(2,"0");return d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate())+"T"+p(d.getHours())+":"+p(d.getMinutes());}
+function setCoverPreview(url){const pv=document.getElementById("bp-cover-preview");if(pv)pv.innerHTML=url?`<img src="${esc(url)}" alt="cover preview" style="max-height:120px;max-width:100%;border-radius:8px;border:1px solid var(--line)">`:"";}
 function bindBlogAdmin(){
+  // Cover image: keep the preview in sync when the URL is edited by hand.
+  document.getElementById("bp-cover")?.addEventListener("input",e=>setCoverPreview(e.target.value.trim()));
+  // Cover image: upload a file to Supabase Storage (public bucket) and use its URL.
+  document.getElementById("bp-cover-file")?.addEventListener("change",async e=>{
+    const file=e.target.files&&e.target.files[0]; if(!file)return;
+    const status=document.getElementById("bp-cover-status"), coverInput=document.getElementById("bp-cover");
+    if(file.size>5*1024*1024){ if(status)status.textContent="Image is too large (max 5 MB)."; return; }
+    if(!supabase){ // demo mode: preview locally (not persisted to a server)
+      const rd=new FileReader(); rd.onload=()=>{coverInput.value=rd.result;setCoverPreview(rd.result);if(status)status.textContent="Loaded (demo — not uploaded).";}; rd.readAsDataURL(file); return;
+    }
+    if(status)status.textContent="Uploading…";
+    try{
+      const ext=(file.name.split(".").pop()||"jpg").toLowerCase().replace(/[^a-z0-9]/g,"")||"jpg";
+      const path="cover-"+Date.now()+"-"+Math.floor(Math.random()*1e4)+"."+ext;
+      const{error}=await supabase.storage.from("blog-covers").upload(path,file,{contentType:file.type,upsert:false});
+      if(error)throw error;
+      const{data}=supabase.storage.from("blog-covers").getPublicUrl(path);
+      const url=(data&&data.publicUrl)||"";
+      coverInput.value=url; setCoverPreview(url);
+      if(status)status.textContent="Uploaded ✓";
+    }catch(err){ if(status)status.textContent="Upload failed: "+((err&&err.message)||"is the blog-covers bucket set up?"); }
+  });
   document.getElementById("bp-save")?.addEventListener("click",async()=>{
     const val=id=>document.getElementById(id).value.trim();
     const title=val("bp-title");if(!title){toast("Add a title.",true);return;}
@@ -1606,12 +1636,28 @@ function bindBlogAdmin(){
 }
 function bindCert(){
   document.getElementById("cert-upload")?.addEventListener("click",async()=>{
+    const btn=document.getElementById("cert-upload");
     const userId=document.getElementById("cert-user").value;
     const title=document.getElementById("cert-title").value.trim()||"Scrum Certificate";
     const courseId=document.getElementById("cert-course").value||null;
     const file=document.getElementById("cert-file").files[0];
+    if(!userId){toast("Choose a learner.",true);return;}
     if(!file&&MODE!=="demo"){toast("Choose a file.",true);return;}
-    await adminAddCertificate(userId,courseId,title,file?file.name:"https://fastrackagile.com/");
+    let fileUrl="https://fastrackagile.com/";
+    if(file&&supabase){
+      if(file.size>10*1024*1024){toast("File is too large (max 10 MB).",true);return;}
+      if(btn){btn.disabled=true;btn.textContent="Uploading…";}
+      try{
+        const ext=(file.name.split(".").pop()||"pdf").toLowerCase().replace(/[^a-z0-9]/g,"")||"pdf";
+        const path=userId+"/cert-"+Date.now()+"."+ext;
+        const{error}=await supabase.storage.from("certificates").upload(path,file,{contentType:file.type,upsert:false});
+        if(error)throw error;
+        const{data}=supabase.storage.from("certificates").getPublicUrl(path);
+        fileUrl=(data&&data.publicUrl)||fileUrl;
+      }catch(err){ if(btn){btn.disabled=false;btn.textContent="Issue certificate";} toast("Upload failed: "+((err&&err.message)||"is the certificates bucket set up?"),true); return; }
+      if(btn){btn.disabled=false;btn.textContent="Issue certificate";}
+    }
+    await adminAddCertificate(userId,courseId,title,fileUrl);
     toast("Certificate issued — visible in the learner's dashboard.");
     location.hash="#/admin-certs";go();
   });
