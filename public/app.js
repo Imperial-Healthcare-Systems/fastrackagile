@@ -1094,7 +1094,7 @@ async function viewPost(slug){
   return `<article class="post">
     <div class="wrap post-head reveal"><a class="back" href="#/blog">← All articles</a>
       <div class="blog-date" style="margin-top:1.1rem">${p.author?`By ${esc(p.author)} · `:""}${fmtDate(p.publish_at||p.created_at)}</div>
-      <h1>${esc(p.title)}</h1>${p.excerpt?`<p class="lede">${esc(p.excerpt)}</p>`:""}</div>
+      <h1>${esc(p.title)}</h1></div>
     ${p.cover?`<div class="wrap"><div class="post-cover" style="background-image:url('${esc(p.cover)}')"></div></div>`:""}
     <div class="wrap post-body reveal">${renderPostBody(p.body)}
       <div class="post-cta"><a class="btn btn-primary" href="#/courses">Explore our programs →</a></div>
