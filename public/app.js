@@ -570,7 +570,7 @@ async function renderHeader(){
   document.getElementById("site-header").innerHTML=`
    <div class="urgency-bar">
      <span class="ub-live"><span class="ld"></span> Live Cohort · Hands-On Practical Scrum Training</span>
-     <span class="ub-seg"><span class="ub-batch">New batch Starts on <b>15th July 2026</b></span> · <span class="ub-time">Mon–Fri · 6:45–8:15 AM IST</span></span>
+     <span class="ub-seg"><span class="ub-batch">New Batch Starts on <b>15th July 2026</b></span> · <span class="ub-time">Mon–Fri · 6:45–8:15 AM IST</span></span>
      <a class="ub-cta" href="${CALENDLY_URL}" data-book-call target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg> Book Your Call</a>
    </div>
    <header><div class="wrap nav">
@@ -724,7 +724,7 @@ function viewHome(){
     <div class="hb-scrim"></div>
     <div class="wrap hb-inner">
       <div class="hero2-copy">
-        <span class="eyebrow anim-1">For non-IT professionals</span>
+        <span class="eyebrow anim-1">Only for Professionals Seeking a Career Switch</span>
         <h1 class="anim-2">${txt("home_hero_title","Break into IT as a <em>Scrum Master</em> — no coding required.")}</h1>
         <p class="lede anim-3">${txt("home_hero_lede","Practical, live Agile and Scrum training with Jira simulations, interview prep, and personal mentorship from Ram — built for people switching from non-tech careers.")}</p>
         <div class="hero2-cta anim-4">
@@ -1077,7 +1077,7 @@ function renderPostBody(body){
 function blogCard(p){
   return `<a class="blog-card" href="#/post/${esc(p.slug)}">
     ${p.cover?`<div class="blog-cover" style="background-image:url('${esc(p.cover)}')"></div>`:`<div class="blog-cover blog-cover-ph"><span>Fastrack Agile</span></div>`}
-    <div class="blog-card-body"><div class="blog-date">${p.author?`By ${esc(p.author)} · `:""}${fmtDate(p.publish_at||p.created_at)}</div><h3>${esc(p.title)}</h3><p>${esc(p.excerpt||"")}</p><span class="blog-more">Read more →</span></div></a>`;
+    <div class="blog-card-body"><div class="blog-date">${p.author?`Author : ${esc(p.author)} · `:""}${fmtDate(p.publish_at||p.created_at)}</div><h3>${esc(p.title)}</h3><p>${esc(p.excerpt||"")}</p><span class="blog-more">Read more →</span></div></a>`;
 }
 async function viewBlog(){
   const posts=await listPosts(false);
@@ -1093,7 +1093,7 @@ async function viewPost(slug){
   }
   return `<article class="post">
     <div class="wrap post-head reveal"><a class="back" href="#/blog">← All articles</a>
-      <div class="blog-date" style="margin-top:1.1rem">${p.author?`By ${esc(p.author)} · `:""}${fmtDate(p.publish_at||p.created_at)}</div>
+      <div class="blog-date" style="margin-top:1.1rem">${p.author?`Author : ${esc(p.author)} · `:""}${fmtDate(p.publish_at||p.created_at)}</div>
       <h1>${esc(p.title)}</h1></div>
     ${p.cover?`<div class="wrap"><div class="post-cover" style="background-image:url('${esc(p.cover)}')"></div></div>`:""}
     <div class="wrap post-body reveal">${renderPostBody(p.body)}

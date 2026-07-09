@@ -35,6 +35,9 @@ img{max-width:100%;display:block}
 /* header */
 .announce{background:var(--ink);color:var(--paper-2);text-align:center;font-size:.82rem;padding:.5rem 1rem}
 .announce b{color:var(--amber)}
+/* #site-header is just a mount point; display:contents lets the inner <header>'s
+   position:sticky work against the whole page instead of this short wrapper. */
+#site-header{display:contents}
 header{position:sticky;top:0;z-index:50;background:rgba(251,248,242,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:88px;max-width:none;padding-left:clamp(20px,3vw,46px);padding-right:clamp(20px,3vw,46px)}
 .brand-logo{display:flex;align-items:center;gap:.55rem}
@@ -1152,7 +1155,7 @@ input:focus-visible,textarea:focus-visible,select:focus-visible,
 .blog-cover-ph{display:grid;place-items:center;background:linear-gradient(135deg,#0c1c33,#16294a)}
 .blog-cover-ph span{font-family:'Fraunces';font-style:italic;color:rgba(255,255,255,.85);font-size:1.15rem}
 .blog-card-body{padding:20px 22px 22px;display:flex;flex-direction:column;flex:1}
-.blog-date{font-size:.75rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--amber-deep);margin-bottom:.5rem}
+.blog-date{font-size:.78rem;font-weight:700;letter-spacing:.02em;color:var(--amber-deep);margin-bottom:.5rem}
 .blog-card-body h3{font-family:'Fraunces';font-weight:600;font-size:1.2rem;line-height:1.25;margin-bottom:.5rem;color:var(--ink)}
 .blog-card-body p{color:var(--ink-soft);font-size:.92rem;line-height:1.55;flex:1}
 .blog-more{margin-top:.9rem;font-weight:700;font-size:.88rem;color:var(--amber-deep)}
@@ -1322,8 +1325,8 @@ html{overflow-x:clip}
 @media(max-width:600px){
   /* Urgency bar: single centered line — batch statement stays whole, then countdown.
      "Book Your Call" moves out of here and into the header bar below. */
-  .urgency-bar{gap:.35rem .5rem;padding:.5rem .7rem;font-size:.72rem;text-align:center;flex-wrap:wrap;justify-content:center}
-  .urgency-bar .ub-live{display:none}
+  .urgency-bar{flex-direction:column;gap:.28rem;padding:.5rem .7rem;font-size:.72rem;text-align:center}
+  .urgency-bar .ub-live{display:inline-flex}  /* "Live Cohort…" shown on its own line, above the date */
   .urgency-bar .ub-cta{display:none}          /* button now lives in the nav */
   .urgency-bar .ub-seg{justify-content:center;flex-wrap:wrap;gap:.3rem;color:#e7edf7}
   .ub-batch{white-space:nowrap}
