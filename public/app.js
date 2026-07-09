@@ -570,7 +570,7 @@ async function renderHeader(){
   document.getElementById("site-header").innerHTML=`
    <div class="urgency-bar">
      <span class="ub-live"><span class="ld"></span> Live Cohort · Hands-On Practical Scrum Training</span>
-     <span class="ub-seg"><span class="ub-batch">New batch Starts on <b>15 July 2026</b></span> · <span class="ub-time">Mon–Fri · 6:45–8:15 AM IST</span></span>
+     <span class="ub-seg"><span class="ub-batch">New batch Starts on <b>15th July 2026</b></span> · <span class="ub-time">Mon–Fri · 6:45–8:15 AM IST</span></span>
      <a class="ub-cta" href="${CALENDLY_URL}" data-book-call target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg> Book Your Call</a>
    </div>
    <header><div class="wrap nav">
