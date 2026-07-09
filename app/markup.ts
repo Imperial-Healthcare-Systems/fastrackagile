@@ -31,7 +31,31 @@ export const MARKUP = `
 </svg>
 <a class="skip-link" href="#main-content">Skip to content</a>
 <div class="scroll-prog" id="scroll-prog"></div>
-<div id="site-header"></div><main id="main-content" tabindex="-1"><div id="app"></div></main><div id="site-footer"></div>
+<div id="site-header"></div><main id="main-content" tabindex="-1"><div id="app"><noscript>
+  <h1>Scrum Master Training in Hyderabad for Non-IT Professionals</h1>
+  <p><strong>Fastrack Agile</strong> (formerly Easy Agile Learning) is a practical, mentor-led Scrum Master, Product Owner and Agile training company in Gachibowli, Hyderabad — built for non-IT professionals switching careers. Led by Balaram (Ram) Choudry, with live Jira sprint simulations, mock interviews and placement support.</p>
+  <h2>Programs</h2>
+  <ul>
+    <li><a href="/course/practical-scrum-launchpad-weekday">Practical Scrum Launchpad (Weekday)</a> — 1 month, online</li>
+    <li><a href="/course/practical-scrum-launchpad-weekend">Practical Scrum Launchpad (Weekend)</a> — 90 days, online</li>
+    <li><a href="/course/practical-scrum-interview-mastery">Practical Scrum Interview Mastery</a> — 1 week mock-interview bootcamp</li>
+    <li><a href="/course/scrum-certification-program">Scrum Certification Program</a> — 2-day ScrumStudy certification, in person</li>
+    <li><a href="/course/scrum-growth-mentorship">Scrum Growth Mentorship (On Job Support)</a> — 1:1 mentorship</li>
+    <li><a href="/course/scrum-smartpath">Scrum SmartPath</a> — self-paced, 1 year access</li>
+  </ul>
+  <h2>Explore</h2>
+  <ul>
+    <li><a href="/courses">All programs</a></li>
+    <li><a href="/about">About Fastrack Agile &amp; Ram Choudry</a></li>
+    <li><a href="/calendar">Training calendar</a></li>
+    <li><a href="/stories">Success stories</a></li>
+    <li><a href="/resources">Blog &amp; resources</a></li>
+    <li><a href="/contact">Contact us</a></li>
+  </ul>
+  <h2>Contact</h2>
+  <p>Phone / WhatsApp: <a href="tel:+919966080123">+91 99660 80123</a> · Email: <a href="mailto:info@fastrackagile.com">info@fastrackagile.com</a> · IndiQube Pearl, Gachibowli, Hyderabad, Telangana 500032, India.</p>
+  <p>This site needs JavaScript for the full experience. Please enable JavaScript, or contact us directly using the details above.</p>
+</noscript></div></main><div id="site-footer"></div>
 <div class="sticky-actions"><a class="wa" href="https://wa.me/919966080123" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg class="ico" aria-hidden="true"><use href="#i-wa"/></svg></a><a class="call" href="tel:9966080123" aria-label="Call us"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg></a></div>
 <div class="sticky-cta" id="sticky-cta">
   <div class="sc-copy"><b>Ready to switch into IT?</b><span>Register free · seats filling for the next cohort</span></div>
