@@ -565,8 +565,8 @@ function payPill(s){return s==="paid"?`<span class="pill pill-paid">Paid</span>`
 async function renderHeader(){
   const prof=await currentProfile();const isAdmin=prof?.role==="admin";
   const auth=prof
-   ?`<a class="btn btn-ghost btn-sm" href="#/dashboard">My Dashboard</a>${isAdmin?`<a class="btn btn-ghost btn-sm" href="#/admin">Admin</a>`:""}<button class="btn btn-ink btn-sm" id="signout">Sign out</button>`
-   :`<a class="btn btn-primary" href="#/contact">Contact us</a><span class="auth-later" hidden><a class="btn btn-ghost" href="#/login">Log in</a><a class="btn btn-primary" href="#/login">Register free</a></span>`;
+   ?`<a class="btn btn-ghost btn-sm" href="/dashboard">My Dashboard</a>${isAdmin?`<a class="btn btn-ghost btn-sm" href="/admin">Admin</a>`:""}<button class="btn btn-ink btn-sm" id="signout">Sign out</button>`
+   :`<a class="btn btn-primary" href="/contact">Contact us</a><span class="auth-later" hidden><a class="btn btn-ghost" href="/login">Log in</a><a class="btn btn-primary" href="/login">Register free</a></span>`;
   document.getElementById("site-header").innerHTML=`
    <div class="urgency-bar">
      <span class="ub-live"><span class="ld"></span> Live Cohort · Hands-On Practical Scrum Training</span>
@@ -574,22 +574,22 @@ async function renderHeader(){
      <a class="ub-cta" href="${CALENDLY_URL}" data-book-call target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg> Book Your Call</a>
    </div>
    <header><div class="wrap nav">
-     <a class="brand-logo" href="#/" aria-label="Fastrack Agile"><img src="${A.LOGO_MARK}" class="logo-mark" alt=""><img src="${A.LOGO_TEXT}" class="logo-text" alt="Fastrack Agile"></a>
-     <nav class="navlinks"><a href="#/">Home</a><a href="#/about">About us</a><a href="#/courses">Programs</a><a href="#/calendar">Training Calendar</a><a href="#/resources">Resources</a><a href="#/stories">Success Stories</a><a href="#/contact">Contact</a></nav>
+     <a class="brand-logo" href="/" aria-label="Fastrack Agile"><img src="${A.LOGO_MARK}" class="logo-mark" alt=""><img src="${A.LOGO_TEXT}" class="logo-text" alt="Fastrack Agile"></a>
+     <nav class="navlinks"><a href="/">Home</a><a href="/about">About us</a><a href="/courses">Programs</a><a href="/calendar">Training Calendar</a><a href="/resources">Resources</a><a href="/stories">Success Stories</a><a href="/contact">Contact</a></nav>
      <div class="nav-cta">${auth}</div>
      <a class="nav-book" href="${CALENDLY_URL}" data-book-call target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg> Book a Call</a>
      <button class="menu-btn" id="menu-btn" aria-label="Menu">☰</button>
    </div>
    <div class="mobile-drawer" id="mobile-drawer">
-     <a href="#/">Home</a><a href="#/about">About us</a><a href="#/courses">Programs</a><a href="#/calendar">Training Calendar</a><a href="#/resources">Resources</a><a href="#/stories">Success Stories</a><a href="#/contact">Contact</a>
+     <a href="/">Home</a><a href="/about">About us</a><a href="/courses">Programs</a><a href="/calendar">Training Calendar</a><a href="/resources">Resources</a><a href="/stories">Success Stories</a><a href="/contact">Contact</a>
      <div class="divider"></div>
-     ${prof?`<a href="#/dashboard">My Dashboard</a>${isAdmin?`<a href="#/admin">Admin Console</a>`:""}<a href="javascript:void(0)" id="m-signout">Sign out</a>`:`<a href="#/contact" class="accent">Contact us</a><span class="auth-later" hidden><a href="#/login">Log in</a><a href="#/login" class="accent">Register free</a></span>`}
+     ${prof?`<a href="/dashboard">My Dashboard</a>${isAdmin?`<a href="/admin">Admin Console</a>`:""}<a href="javascript:void(0)" id="m-signout">Sign out</a>`:`<a href="/contact" class="accent">Contact us</a><span class="auth-later" hidden><a href="/login">Log in</a><a href="/login" class="accent">Register free</a></span>`}
    </div></header>`;
-  document.getElementById("signout")?.addEventListener("click",async()=>{await signOutNow();await renderHeader();location.hash="#/";});
+  document.getElementById("signout")?.addEventListener("click",async()=>{await signOutNow();await renderHeader();navigate("/");});
   const mb=document.getElementById("menu-btn"),dr=document.getElementById("mobile-drawer");
   mb?.addEventListener("click",()=>dr.classList.toggle("open"));
   dr?.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>dr.classList.remove("open")));
-  document.getElementById("m-signout")?.addEventListener("click",async()=>{await signOutNow();await renderHeader();location.hash="#/";});
+  document.getElementById("m-signout")?.addEventListener("click",async()=>{await signOutNow();await renderHeader();navigate("/");});
   if(typeof startCountdown==="function") startCountdown();
 }
 function renderFooter(){
@@ -628,18 +628,18 @@ function renderFooter(){
     <div class="wrap">
       <div class="foot-main">
         <div class="foot-brandcol">
-          <a class="brand-logo" href="#/" aria-label="Fastrack Agile — home"><img src="${A.LOGO_MARK}" class="logo-mark" alt=""><img src="${A.LOGO_TEXT}" class="logo-text" alt="Fastrack Agile"></a>
+          <a class="brand-logo" href="/" aria-label="Fastrack Agile — home"><img src="${A.LOGO_MARK}" class="logo-mark" alt=""><img src="${A.LOGO_TEXT}" class="logo-text" alt="Fastrack Agile"></a>
           <p class="blurb">Master Agile &amp; Scrum the practical way. Career-focused training for non-IT professionals breaking into IT — led personally by Ram Choudry.</p>
-          <a class="foot-explore-btn" href="#/courses">Explore Our Courses <svg class="ico" aria-hidden="true"><use href="#i-arrow-r"/></svg></a>
+          <a class="foot-explore-btn" href="/courses">Explore Our Courses <svg class="ico" aria-hidden="true"><use href="#i-arrow-r"/></svg></a>
         </div>
 
         <div class="foot-col">
           <h4>Explore</h4><div class="h4-rule"></div>
-          <a class="foot-link" href="#/about"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg> About us</a>
-          <a class="foot-link" href="#/courses"><svg class="ico" aria-hidden="true"><use href="#i-book"/></svg> Courses</a>
-          <a class="foot-link" href="#/calendar"><svg class="ico" aria-hidden="true"><use href="#i-cal"/></svg> Training Calendar</a>
-          <a class="foot-link" href="#/resources"><svg class="ico" aria-hidden="true"><use href="#i-folder"/></svg> Resources</a>
-          <a class="foot-link" href="#/contact"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg> Contact</a>
+          <a class="foot-link" href="/about"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg> About us</a>
+          <a class="foot-link" href="/courses"><svg class="ico" aria-hidden="true"><use href="#i-book"/></svg> Courses</a>
+          <a class="foot-link" href="/calendar"><svg class="ico" aria-hidden="true"><use href="#i-cal"/></svg> Training Calendar</a>
+          <a class="foot-link" href="/resources"><svg class="ico" aria-hidden="true"><use href="#i-folder"/></svg> Resources</a>
+          <a class="foot-link" href="/contact"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg> Contact</a>
         </div>
 
         <div class="foot-col">
@@ -664,7 +664,7 @@ function renderFooter(){
         <span class="fb-badge"><svg class="ico" aria-hidden="true"><use href="#i-shield"/></svg> Practice Driven Scrum</span>
         <span class="fb-sep"></span>
         <span class="fb-copy"><svg class="ico" aria-hidden="true" style="width:16px;height:16px;vertical-align:-.15em;color:#5a6478"><use href="#i-lock"/></svg> © 2026 Fastrack Agile. All rights reserved.</span>
-        <span class="foot-legal"><a href="#/privacy">Privacy Policy</a><a href="#/terms">Terms of Use</a><a href="#/refund">Refund Policy</a></span>
+        <span class="foot-legal"><a href="/privacy">Privacy Policy</a><a href="/terms">Terms of Use</a><a href="/refund">Refund Policy</a></span>
       </div>
     </div>
   </footer>`;
@@ -676,13 +676,13 @@ function appShell(active, profile, bodyHtml, isAdmin){
   const learnerNav=[["dashboard","My Dashboard","▣"],["assessment","Open Assessment","📝"],["courses","Browse Courses","◳"],["certs","My Certificate","🏅"]];
   const adminNav=[["admin","Overview","▣"],["admin-enroll","Enrollments","◳"],["admin-payments","Payments","₹"],["admin-assess","Assessments","📝"],["admin-content","Content","✎"],["admin-blog","Blog","✍"],["admin-learners","Learners","☻"],["admin-leads","Leads","✉"],["admin-certs","Certificates","🏅"]];
   const nav=isAdmin?adminNav:learnerNav;
-  const links=nav.map(([k,label,ic])=>`<a class="snav-link ${active===k?'on':''}" href="#/${k==='certs'?'dashboard':k==='courses'?'courses':k}">${ic} <span>${label}</span></a>`).join("");
+  const links=nav.map(([k,label,ic])=>`<a class="snav-link ${active===k?'on':''}" href="/${k==='certs'?'dashboard':k==='courses'?'courses':k}">${ic} <span>${label}</span></a>`).join("");
   return `<div class="shell">
     <aside class="sidebar">
-      <a class="brand-logo" href="#/" style="margin-bottom:1.6rem"><img src="${A.LOGO_MARK}" style="height:38px" alt=""><img src="${A.LOGO_TEXT}" style="height:22px" alt="Fastrack Agile"></a>
+      <a class="brand-logo" href="/" style="margin-bottom:1.6rem"><img src="${A.LOGO_MARK}" style="height:38px" alt=""><img src="${A.LOGO_TEXT}" style="height:22px" alt="Fastrack Agile"></a>
       <div class="snav">${links}</div>
       <div class="snav" style="margin-top:auto">
-        <a class="snav-link" href="#/">↩ <span>Back to site</span></a>
+        <a class="snav-link" href="/">↩ <span>Back to site</span></a>
         <a class="snav-link" id="shell-signout" href="javascript:void(0)">⏻ <span>Sign out</span></a>
       </div>
     </aside>
@@ -696,7 +696,7 @@ function appShell(active, profile, bodyHtml, isAdmin){
   </div>`;
 }
 function bindShell(){
-  document.getElementById("shell-signout")?.addEventListener("click",async()=>{await signOutNow();await renderHeader();location.hash="#/";});
+  document.getElementById("shell-signout")?.addEventListener("click",async()=>{await signOutNow();await renderHeader();navigate("/");});
 }
 function showChrome(show){
   document.getElementById("site-header").style.display=show?"":"none";
@@ -710,7 +710,7 @@ const app=()=>document.getElementById("app");
 
 /* ---- HOME (rebuilt, clean) ---- */
 function viewHome(){
-  const prog=mergedCourses().slice(0,3).map(c=>`<article class="course-card"><div class="cc-top"></div><div class="cc-body"><span class="cc-mode">${esc(c.mode)}</span><h3>${esc(c.title)}</h3><div class="cc-sub">${esc(c.subtitle||"")}</div><p class="cc-summary">${esc(c.summary)}</p><div class="cc-meta"><span>🗓 ${esc(c.duration)}</span><span>⏰ ${esc(c.schedule)}</span></div><div class="cc-actions"><a class="btn btn-primary btn-sm" href="#/course/${c.slug}">View &amp; enroll →</a></div></div></article>`).join("");
+  const prog=mergedCourses().slice(0,3).map(c=>`<article class="course-card"><div class="cc-top"></div><div class="cc-body"><span class="cc-mode">${esc(c.mode)}</span><h3>${esc(c.title)}</h3><div class="cc-sub">${esc(c.subtitle||"")}</div><p class="cc-summary">${esc(c.summary)}</p><div class="cc-meta"><span>🗓 ${esc(c.duration)}</span><span>⏰ ${esc(c.schedule)}</span></div><div class="cc-actions"><a class="btn btn-primary btn-sm" href="/course/${c.slug}">View &amp; enroll →</a></div></div></article>`).join("");
   const cert=CERTS.map(c=>`<div class="cert-chip"><div class="nm">${esc(c.nm)}</div><div class="ds">${esc(c.ds)}</div></div>`).join("");
   const faqs=[["I'm from a non-IT background — is this really possible for me?","Absolutely. Non-IT professionals often make excellent Scrum Masters. Companies hire Scrum Masters for leadership, communication, coordination and stakeholder management — not for coding. If you come from operations, support, sales or any coordination role, you already have the core skills recruiters look for; we simply help you reframe your background for IT hiring managers."],["Do I need to learn coding or any technical tools first?","No — there are no technical prerequisites. Scrum Masters are not developers; you are not expected to write code or debug applications. The role is about understanding team dynamics, tracking project progress and removing obstacles, not programming."],["How long does it realistically take to transition into a Scrum Master role?","For most working professionals it takes about 6 to 12 months, depending on your experience, effort and how consistently you apply what you learn. We share realistic timelines — never unrealistic overnight claims."],["What salary can I expect after becoming a Scrum Master?","Entry-level roles typically range from ₹8–12 LPA, growing to ₹15–20 LPA with experience, and can go beyond ₹30 LPA at senior levels. We keep salary expectations transparent and realistic."],["I'm already working full-time — can I manage this transition?","Yes. Most of our successful learners are working professionals. The program is structured to fit around full-time jobs, families and busy schedules."],["Do you provide placement assistance?","Yes — resume refinement, LinkedIn optimisation, interview coaching, mock interviews and application guidance. That said, placement is not magic: your active participation and effort are what turn this support into real offers."],["I'm earning very low right now — is this path financially worth it?","For experienced professionals who want to avoid a coding career, this is one of the highest-ROI transitions available — a realistic step up from ₹3–6 LPA roles into far higher-paying Scrum Master positions."],["Is a Scrum Master certification alone enough to get a job?","No. Recruiters don't hire certificates — they hire people who can demonstrate real-world Scrum understanding, leadership ability and interview readiness. A certificate helps, but it is not enough on its own, which is exactly why our training is practical and interview-focused."]];
   const faq=faqs.map(([q,a])=>`<div class="faq2-item"><button class="faq2-q">${q} <span class="pm">+</span></button><div class="faq2-a"><p>${a}</p></div></div>`).join("");
@@ -728,8 +728,8 @@ function viewHome(){
         <h1 class="anim-2">${txt("home_hero_title","Break into IT as a <em>Scrum Master</em> — no coding required.")}</h1>
         <p class="lede anim-3">${txt("home_hero_lede","Practical, live Agile and Scrum training with Jira simulations, interview prep, and personal mentorship from Ram — built for people switching from non-tech careers.")}</p>
         <div class="hero2-cta anim-4">
-          <a class="btn btn-primary" href="#/courses">Register Now →</a>
-          <a class="btn btn-ghost btn-on-dark" href="#/courses">Programs</a>
+          <a class="btn btn-primary" href="/courses">Register Now →</a>
+          <a class="btn btn-ghost btn-on-dark" href="/courses">Programs</a>
         </div>
         <div class="hero2-ticks anim-4"><span><svg class="ico tk" aria-hidden="true"><use href="#i-check"/></svg> Online &amp; In-Person</span><span><svg class="ico tk" aria-hidden="true"><use href="#i-check"/></svg> Placement Support</span></div>
       </div>
@@ -758,7 +758,7 @@ function viewHome(){
         <div><span class="ic">✦</span> Real-time practical training — online and at our Gachibowli center</div>
         <div><span class="ic">✦</span> Proven, verifiable track record — connect with Ram on LinkedIn</div>
       </div>
-      <div class="hero2-cta"><a class="btn btn-primary" href="https://www.linkedin.com/in/balram-choudry/" target="_blank" rel="noopener">Connect on LinkedIn →</a><a class="btn" style="background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.35)" href="#/about">His full story</a></div>
+      <div class="hero2-cta"><a class="btn btn-primary" href="https://www.linkedin.com/in/balram-choudry/" target="_blank" rel="noopener">Connect on LinkedIn →</a><a class="btn" style="background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.35)" href="/about">His full story</a></div>
     </div>
   </div></section>
 
@@ -787,14 +787,14 @@ function viewHome(){
     <div class="sec-head center reveal"><span class="eyebrow">Programs</span><h2>Choose your path into Scrum.</h2><p>Six practical programs — weekday, weekend, interview bootcamp, certification, mentorship, and self-paced.</p></div>
     <div class="prog-urgency reveal"><span class="pu-live"><span class="ld"></span> Enrolling now</span><span>Next weekday cohort closes in <b id="prog-countdown">soon</b></span><span><b>6</b> of 12 seats left</span></div>
     <div class="prog-grid reveal" data-stagger>${prog}</div>
-    <div class="center-txt mt-8"><a class="btn btn-primary" href="#/courses">View all 6 programs →</a></div>
+    <div class="center-txt mt-8"><a class="btn btn-primary" href="/courses">View all 6 programs →</a></div>
   </div></section>
 
   <!-- SUCCESS STORIES (real learner placements) -->
   <section class="sec-block"><div class="wrap">
     <div class="sec-head center reveal"><span class="eyebrow">Success stories</span><h2>From non-IT careers to Scrum Master roles.</h2><p>Real messages from our learners after they landed Scrum Master roles at leading companies across India and beyond.</p></div>
     <div class="reviews-grid reveal" data-stagger>${storiesData().map((s,i)=>`<div class="review"><div class="review-top"><div class="review-av" style="background:${["#5b8def","#e0902b","#1f7a55","#9b59b6","#e74c3c","#16a085","#d4762a","#3b7dd8"][i%8]}">${esc(s.n[0])}</div><div><div class="review-name">${esc(s.n)}</div><div class="review-role">${esc(s.b)}${s.role?" · "+esc(s.role):""}</div></div></div><p class="review-txt">"${esc(s.t)}"</p><div class="review-foot"><svg class="ico" aria-hidden="true" style="width:15px;height:15px;color:#1f7a55"><use href="#i-check"/></svg> Verified placement</div></div>`).join("")}</div>
-    <div class="center-txt mt-8"><a class="btn btn-primary" href="#/stories">See all success stories →</a></div>
+    <div class="center-txt mt-8"><a class="btn btn-primary" href="/stories">See all success stories →</a></div>
   </div></section>
 
   <!-- SUCCESS STORY WALL (real learners) -->
@@ -847,7 +847,7 @@ function viewHome(){
   <section class="sec-block final2"><div class="wrap reveal r-scale">
     <h2>Your first step into IT starts with one conversation.</h2>
     <p>Register free, book a no-pressure call, and we'll map out your transition — honestly.</p>
-    <div class="hero2-cta" style="justify-content:center"><a class="btn btn-ink" href="#/courses">Register free →</a><a class="btn btn-ghost" href="https://wa.me/${WHATSAPP}" style="border-color:var(--ink)">Chat on WhatsApp</a></div>
+    <div class="hero2-cta" style="justify-content:center"><a class="btn btn-ink" href="/courses">Register free →</a><a class="btn btn-ghost" href="https://wa.me/${WHATSAPP}" style="border-color:var(--ink)">Chat on WhatsApp</a></div>
   </div></section>`;
 }
 
@@ -859,7 +859,7 @@ async function viewCourses(){
     <div class="cc-sub">${esc(c.subtitle||"")}</div><p class="cc-summary">${esc(c.summary||"")}</p>
     <div class="cc-meta"><span>🗓 ${esc(c.duration||"")}</span><span>⏰ ${esc(c.schedule||"")}</span></div>
     <div class="cc-price" style="font-weight:800;font-size:1.15rem;color:var(--ink);margin:.15rem 0 .2rem">${priceINR(basePrice(c.slug))} <span style="font-weight:500;font-size:.8rem;color:var(--ink-soft)">+ GST</span></div>
-    <div class="cc-actions"><a class="btn btn-primary btn-sm" href="#/course/${c.slug}">View &amp; enroll →</a>
+    <div class="cc-actions"><a class="btn btn-primary btn-sm" href="/course/${c.slug}">View &amp; enroll →</a>
     <a class="btn btn-ghost btn-sm" target="_blank" rel="noopener" href="https://wa.me/${WHATSAPP}?text=${encodeURIComponent('Hi, I want details about '+c.title)}">WhatsApp</a></div>
     </div></article>`;
   return `<section class="page-head wrap reveal"><span class="eyebrow">Programs</span>
@@ -876,7 +876,7 @@ async function viewCourse(slug){
     if(sessionStorage.getItem("register_after_login")===slug){ sessionStorage.removeItem("register_after_login"); startRegister(c); }
   },0);
   return `<section class="course-hero"><div class="wrap reveal">
-    <a class="back" href="#/courses">← All courses</a>
+    <a class="back" href="/courses">← All courses</a>
     <div class="eyebrow" style="margin-top:1rem">${esc(c.mode)} program</div>
     <h1>${esc(c.title)}</h1>${c.subtitle?`<div class="sub">${esc(c.subtitle)}</div>`:""}<p class="lede">${esc(c.summary||"")}</p>
     <div class="spec-row">
@@ -900,12 +900,12 @@ async function viewCourse(slug){
 }
 async function doEnroll(course){
   const s=await currentSession();
-  if(!s){sessionStorage.setItem("enroll_after_login",course.slug);toast("Please register or log in first — it's free.");setTimeout(()=>location.hash="#/login",700);return;}
+  if(!s){sessionStorage.setItem("enroll_after_login",course.slug);toast("Please register or log in first — it's free.");setTimeout(()=>navigate("/login"),700);return;}
   const{error}=await requestEnrollment(course);
   if(error&&!String(error.message).includes("duplicate")){toast(error.message,true);return;}
   if(error&&String(error.message).includes("duplicate")){toast("You've already requested this course.");}
   else toast("Request sent! It's now in your dashboard.");
-  setTimeout(()=>location.hash="#/dashboard",900);
+  setTimeout(()=>navigate("/dashboard"),900);
 }
 
 /* ---- ABOUT ---- */
@@ -954,7 +954,7 @@ function viewAbout(){
           <div class="abt-stat"><b>350+</b><span>Learners in the community</span></div>
           <div class="abt-stat"><b>200+</b><span>Placements Supported</span></div>
         </div>
-        <div class="abt-cta"><button class="btn btn-primary" type="button" data-book-call>📞 Book a 1:1 call →</button><a class="btn btn-ghost" href="#/courses">See the programs</a><a class="btn btn-ghost" href="https://www.linkedin.com/in/balram-choudry/" target="_blank" rel="noopener">Connect on LinkedIn</a></div>
+        <div class="abt-cta"><button class="btn btn-primary" type="button" data-book-call>📞 Book a 1:1 call →</button><a class="btn btn-ghost" href="/courses">See the programs</a><a class="btn btn-ghost" href="https://www.linkedin.com/in/balram-choudry/" target="_blank" rel="noopener">Connect on LinkedIn</a></div>
       </div>
     </section>
 
@@ -978,7 +978,7 @@ function viewAbout(){
       <h2>You're not joining a course. You're joining a community.</h2>
       <p>Every day we meet professionals who feel stuck — some believe they're too late to switch careers, some think they don't have the “perfect” technical background, others simply don't know where to begin. We've seen those stories before. More importantly, we've seen how they end: with the right guidance, practical coaching, and consistent support, careers change, confidence grows, and opportunities appear.</p>
       <p>Whether you're preparing for your first Scrum Master interview, aiming to move into a Product Owner role, or looking to accelerate your Agile career, we'll walk that journey with you — every sprint, every interview, and every milestone. <strong>The next success story we celebrate could be yours.</strong></p>
-      <div class="abt-cta" style="justify-content:center;margin-top:1.4rem"><a class="btn btn-primary" href="#/courses">Explore the programs →</a><button class="btn btn-ghost btn-on-dark" type="button" data-book-call>Book a 1:1 call</button></div>
+      <div class="abt-cta" style="justify-content:center;margin-top:1.4rem"><a class="btn btn-primary" href="/courses">Explore the programs →</a><button class="btn btn-ghost btn-on-dark" type="button" data-book-call>Book a 1:1 call</button></div>
     </section>
 
     <section style="padding:44px 0 84px">
@@ -1003,11 +1003,11 @@ function viewStories(){
     <span class="eyebrow">Success stories</span>
     <h1>Real students. Real placements.</h1>
     <p class="lede">Unfiltered messages from our learners in the Fastrack Agile community — the moment they landed their Scrum Master roles. Your story could be next.</p>
-    <div style="margin-top:1.5rem"><a class="btn btn-primary" href="#/courses">Start your journey →</a></div>
+    <div style="margin-top:1.5rem"><a class="btn btn-primary" href="/courses">Start your journey →</a></div>
   </section>
   <div class="wrap" style="padding:34px 0 88px">
     <div class="st-grid" id="st-grid"></div>
-    <div class="st-empty" id="st-empty"><div class="st-empty-ic">🖼️</div><p><strong>Success stories are on their way.</strong></p><p class="note" style="margin-top:.4rem">We're adding our learners' placement messages here shortly. Meanwhile, see written testimonials on the <a class="accent" href="#/">home page</a>.</p></div>
+    <div class="st-empty" id="st-empty"><div class="st-empty-ic">🖼️</div><p><strong>Success stories are on their way.</strong></p><p class="note" style="margin-top:.4rem">We're adding our learners' placement messages here shortly. Meanwhile, see written testimonials on the <a class="accent" href="/">home page</a>.</p></div>
   </div>
   <div class="st-lightbox" id="st-lightbox" aria-hidden="true"><button class="st-close" aria-label="Close">&times;</button><img alt="Success story"></div>`;
 }
@@ -1075,7 +1075,7 @@ function renderPostBody(body){
   }).join("");
 }
 function blogCard(p){
-  return `<a class="blog-card" href="#/post/${esc(p.slug)}">
+  return `<a class="blog-card" href="/post/${esc(p.slug)}">
     ${p.cover?`<div class="blog-cover" style="background-image:url('${esc(p.cover)}')"></div>`:`<div class="blog-cover blog-cover-ph"><span>Fastrack Agile</span></div>`}
     <div class="blog-card-body"><div class="blog-date">${p.author?`Author : ${esc(p.author)} · `:""}${fmtDate(p.publish_at||p.created_at)}</div><h3>${esc(p.title)}</h3><p>${esc(p.excerpt||"")}</p><span class="blog-more">Read more →</span></div></a>`;
 }
@@ -1089,15 +1089,15 @@ async function viewPost(slug){
   const p=await getPost(slug);
   if(!postIsLive(p)){
     return `<section class="page-head wrap reveal"><span class="eyebrow">Blog</span><h1>Article not found</h1>
-      <p>This post may have been moved, or it isn't published yet.</p><div class="mt-4"><a class="btn btn-primary" href="#/blog">← Back to the blog</a></div></section>`;
+      <p>This post may have been moved, or it isn't published yet.</p><div class="mt-4"><a class="btn btn-primary" href="/blog">← Back to the blog</a></div></section>`;
   }
   return `<article class="post">
-    <div class="wrap post-head reveal"><a class="back" href="#/blog">← All articles</a>
+    <div class="wrap post-head reveal"><a class="back" href="/blog">← All articles</a>
       <div class="blog-date" style="margin-top:1.1rem">${p.author?`Author : ${esc(p.author)} · `:""}${fmtDate(p.publish_at||p.created_at)}</div>
       <h1>${esc(p.title)}</h1></div>
     ${p.cover?`<div class="wrap"><div class="post-cover" style="background-image:url('${esc(p.cover)}')"></div></div>`:""}
     <div class="wrap post-body reveal">${renderPostBody(p.body)}
-      <div class="post-cta"><a class="btn btn-primary" href="#/courses">Explore our programs →</a></div>
+      <div class="post-cta"><a class="btn btn-primary" href="/courses">Explore our programs →</a></div>
     </div>
   </article>`;
 }
@@ -1111,11 +1111,11 @@ function viewCalendar(){
     {course:"Scrum Certification Program (ScrumStudy)",slug:"scrum-certification-program",start:"26–27 Jul 2026",time:"10 AM–6 PM IST",mode:"In Person/Offline"},
     {course:"Scrum Growth Mentorship (On Job Support)",slug:"scrum-growth-mentorship",start:"Rolling",time:"Flexible",mode:"Online"}
   ];
-  const row=b=>`<tr><td><strong>${esc(b.course)}</strong></td><td style="white-space:nowrap">${esc(b.start)}</td><td style="white-space:nowrap">${esc(b.time)}</td><td style="white-space:nowrap;text-align:center">${esc(b.mode)}</td><td style="text-align:center"><a class="btn btn-primary btn-sm" style="white-space:nowrap;display:inline-block" href="#/course/${b.slug}">Reserve seat</a></td></tr>`;
+  const row=b=>`<tr><td><strong>${esc(b.course)}</strong></td><td style="white-space:nowrap">${esc(b.start)}</td><td style="white-space:nowrap">${esc(b.time)}</td><td style="white-space:nowrap;text-align:center">${esc(b.mode)}</td><td style="text-align:center"><a class="btn btn-primary btn-sm" style="white-space:nowrap;display:inline-block" href="/course/${b.slug}">Reserve seat</a></td></tr>`;
   return `<section class="page-head wrap reveal"><span class="eyebrow">Training Calendar</span><h1>Upcoming batches.</h1>
     <p>Live online and in-person cohorts in Hyderabad. Reserve a seat over WhatsApp — pricing is shared personally.</p></section>
     <div class="wrap" style="padding-bottom:80px"><div class="panel" style="overflow-x:auto"><table class="table"><thead><tr><th>Program</th><th>Starts</th><th>Schedule</th><th style="text-align:center">Mode</th><th></th></tr></thead><tbody>${batches.map(row).join("")}</tbody></table></div>
-    <p class="note mt-4">Dates indicative — confirm the live schedule on WhatsApp or the <a href="#/contact" class="accent">contact page</a>.</p></div>`;
+    <p class="note mt-4">Dates indicative — confirm the live schedule on WhatsApp or the <a href="/contact" class="accent">contact page</a>.</p></div>`;
 }
 
 /* ---- RESOURCES hub (Blog · Podcast · FAQ) ---- */
@@ -1137,7 +1137,7 @@ function viewAdminLogin(){
     <div class="field"><label for="al-email">Email</label><input id="al-email" type="email" autocomplete="username" value="${esc(ADMIN_EMAIL)}" placeholder="admin@fastrackagile.com"></div>
     <div class="field"><label for="al-pass">Password</label><input id="al-pass" type="password" autocomplete="current-password" placeholder="••••••••"></div>
     <button class="btn btn-primary full-btn" id="al-go">Sign in →</button>
-    <p class="note center-txt mt-4"><a class="lk" href="#/login">← Learner login (email code)</a></p>
+    <p class="note center-txt mt-4"><a class="lk" href="/login">← Learner login (email code)</a></p>
   </div></div>`;
 }
 function bindAdminLogin(){
@@ -1149,7 +1149,7 @@ function bindAdminLogin(){
     const{error}=await adminPasswordLogin(email,pass);
     btn.disabled=false;btn.textContent="Sign in →";
     if(error){toast(error.message||"Sign in failed.",true);return;}
-    await renderHeader();toast("Welcome back, Ram.");location.hash="#/admin";
+    await renderHeader();toast("Welcome back, Ram.");navigate("/admin");
   };
   document.getElementById("al-go")?.addEventListener("click",go);
   document.getElementById("al-pass")?.addEventListener("keydown",e=>{if(e.key==="Enter")go();});
@@ -1188,17 +1188,17 @@ function viewLogin(){
 }
 function afterLogin(){
   const reg=sessionStorage.getItem("register_after_login");
-  if(reg){location.hash="#/course/"+reg;return;} // viewCourse re-opens the payment popup
+  if(reg){navigate("/course/"+reg);return;} // viewCourse re-opens the payment popup
   const pending=sessionStorage.getItem("enroll_after_login");
-  if(pending){sessionStorage.removeItem("enroll_after_login");location.hash="#/course/"+pending;}
-  else location.hash="#/dashboard";
+  if(pending){sessionStorage.removeItem("enroll_after_login");navigate("/course/"+pending);}
+  else navigate("/dashboard");
 }
 async function quickDemo(role){
   const email=role==="admin"?ADMIN_EMAIL:"priya@example.com";
   await sendOtp(email,role==="admin"?"Ram Choudry":"Priya Sharma","");
   await verifyOtp(email,"123456");
   await renderHeader();toast(role==="admin"?"Logged in as Ram (admin).":"Logged in as Priya (learner).");
-  location.hash=role==="admin"?"#/admin":"#/dashboard";
+  navigate(role==="admin"?"/admin":"/dashboard");
 }
 function bindLogin(){
   document.querySelectorAll("[data-demo]").forEach(b=>b.addEventListener("click",()=>quickDemo(b.dataset.demo)));
@@ -1232,11 +1232,11 @@ function bindLogin(){
 /* ---- DASHBOARD (app shell) ---- */
 async function viewDashboard(){
   const prof=await currentProfile();
-  if(!prof){location.hash="#/login";return "";}
+  if(!prof){navigate("/login");return "";}
   const enrolls=await myEnrollments();const certs=await myCertificates();
   const active=enrolls.filter(e=>e.status==="active").length;
   let courseHtml="";
-  if(!enrolls.length){courseHtml=`<div class="panel empty">You haven't requested any programs yet.<div class="mt-4"><a class="btn btn-primary" href="#/courses">Browse courses →</a></div></div>`;}
+  if(!enrolls.length){courseHtml=`<div class="panel empty">You haven't requested any programs yet.<div class="mt-4"><a class="btn btn-primary" href="/courses">Browse courses →</a></div></div>`;}
   else{courseHtml=`<div style="display:grid;gap:16px">`;
     for(const e of enrolls){const c=e.courses||{};let mats="";
       if(e.status==="active"){const ms=await materialsFor(e.course_id);
@@ -1258,9 +1258,9 @@ async function viewDashboard(){
     <div class="dash-greet"><h2 class="shell-h" style="margin:0 0 .2rem">Welcome back, ${firstName} 👋</h2><p class="note">Here's everything happening with your learning journey.</p></div>
     <div class="stat-row">
       ${[[enrolls.length,"Programs requested"],[active,"Active now"],[certs.length,"Certificates"]].map(([n,l])=>`<div class="statcard"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("")}
-      <a class="statcard cta" href="#/courses"><div class="n">+</div><div class="l">Browse more courses</div></a>
+      <a class="statcard cta" href="/courses"><div class="n">+</div><div class="l">Browse more courses</div></a>
     </div>
-    <a class="assess-cta" href="#/assessment"><div class="assess-cta-ic">📝</div><div class="assess-cta-copy"><strong>Open Assessment</strong><span>Test your Scrum knowledge — 20 random questions with instant scoring &amp; explanations.</span></div><span class="assess-cta-go">Start →</span></a>
+    <a class="assess-cta" href="/assessment"><div class="assess-cta-ic">📝</div><div class="assess-cta-copy"><strong>Open Assessment</strong><span>Test your Scrum knowledge — 20 random questions with instant scoring &amp; explanations.</span></div><span class="assess-cta-go">Start →</span></a>
     <h2 class="shell-h">My programs</h2>${courseHtml}
     <h2 class="shell-h" style="margin-top:2rem">My certificate</h2>${certHtml}`;
   setTimeout(bindShell,0);
@@ -1270,8 +1270,8 @@ async function viewDashboard(){
 /* ---- ADMIN (app shell, multiple sub-views) ---- */
 async function viewAdmin(sub){
   const prof=await currentProfile();
-  if(!prof){location.hash="#/admin-login";return "";}
-  if(prof.role!=="admin"){return `<section class="page-head wrap reveal"><h1>Admin access only</h1><p>This account isn't an admin. Sign in with the admin account to manage the platform.</p><div class="mt-4"><a class="btn btn-primary" href="#/admin-login">Admin sign in</a></div></section>`;}
+  if(!prof){navigate("/admin-login");return "";}
+  if(prof.role!=="admin"){return `<section class="page-head wrap reveal"><h1>Admin access only</h1><p>This account isn't an admin. Sign in with the admin account to manage the platform.</p><div class="mt-4"><a class="btn btn-primary" href="/admin-login">Admin sign in</a></div></section>`;}
   const enrolls=await adminEnrollments();const leads=await adminLeads();const learners=await adminListLearners();
   const req=enrolls.filter(e=>e.status==="requested").length,act=enrolls.filter(e=>e.status==="active").length,paid=enrolls.filter(e=>e.payment_status==="paid").length;
   let body="";
@@ -1279,7 +1279,7 @@ async function viewAdmin(sub){
     body=`<div class="stat-row">
       ${[[enrolls.length,"Total requests"],[req,"Awaiting activation"],[act,"Active learners"],[leads.length,"New leads"]].map(([n,l])=>`<div class="statcard"><div class="n">${n}</div><div class="l">${l}</div></div>`).join("")}</div>
       <h2 class="shell-h">Recent enrollment requests</h2>${enrollTable(enrolls.slice(0,6))}
-      <div style="margin-top:1.4rem"><a class="btn btn-ghost btn-sm" href="#/admin-enroll">View all enrollments →</a> <a class="btn btn-ghost btn-sm" href="#/admin-leads">View leads →</a></div>`;
+      <div style="margin-top:1.4rem"><a class="btn btn-ghost btn-sm" href="/admin-enroll">View all enrollments →</a> <a class="btn btn-ghost btn-sm" href="/admin-leads">View leads →</a></div>`;
   } else if(sub==="admin-enroll"){
     body=`<h2 class="shell-h">All enrollments</h2><p class="note" style="margin-bottom:1rem">Change a status to <b>active</b> to unlock that learner's materials. Mark payment when received over WhatsApp.</p>${enrollTable(enrolls)}`;
   } else if(sub==="admin-payments"){
@@ -1384,7 +1384,7 @@ async function viewAdmin(sub){
           <label>Status<select id="bp-status"><option value="draft"${f.status!=="published"?" selected":""}>Draft</option><option value="published"${f.status==="published"?" selected":""}>Published</option></select></label>
           <label>Publish date/time <span class="note">(optional — schedule)</span><input id="bp-date" type="datetime-local" value="${f.publish_at?fmtLocalInput(f.publish_at):""}"></label>
         </div>
-        <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.6rem"><button class="btn btn-primary" id="bp-save">${ep?"Update post":"Save post"}</button>${ep?`<a class="btn btn-ghost" href="#/post/${esc(f.slug||"")}" target="_blank" rel="noopener">Preview</a><button class="btn btn-ghost" id="bp-cancel">Cancel edit</button>`:""}</div>
+        <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.6rem"><button class="btn btn-primary" id="bp-save">${ep?"Update post":"Save post"}</button>${ep?`<a class="btn btn-ghost" href="/post/${esc(f.slug||"")}" target="_blank" rel="noopener">Preview</a><button class="btn btn-ghost" id="bp-cancel">Cancel edit</button>`:""}</div>
       </div>
       <h2 class="shell-h" style="margin-top:1.6rem">All posts (${posts.length})</h2>
       <div class="panel" style="overflow-x:auto"><table class="table"><thead><tr><th>Title</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead><tbody>
@@ -1659,7 +1659,7 @@ function bindCert(){
     }
     await adminAddCertificate(userId,courseId,title,fileUrl);
     toast("Certificate issued — visible in the learner's dashboard.");
-    location.hash="#/admin-certs";go();
+    navigate("/admin-certs");go();
   });
 }
 
@@ -1738,7 +1738,7 @@ function startAssessTimer(){
 }
 async function viewAssessment(){
   const prof=await currentProfile();
-  if(!prof){location.hash="#/login";return "";}
+  if(!prof){navigate("/login");return "";}
   const pool=Array.isArray(window.SCRUM_QA)?window.SCRUM_QA:[];
   if(!pool.length){
     return appShell("assessment",prof,`<div class="panel empty"><strong>Assessment bank not loaded.</strong><p class="mt-2">The question bank could not be loaded. Please refresh the page and try again.</p></div>`,false);
@@ -1846,7 +1846,7 @@ function assessmentResults(){
       <div class="qa-score-copy">
         <h2 class="shell-h" style="margin:0 0 .3rem">${pass?'Great work — you passed! 🎉':'Good effort — keep practising 💪'}</h2>
         <p class="note">You answered <strong>${correct}</strong> of <strong>${total}</strong> correctly. The PSM I / CSM benchmark is around 85%. Review the explanations below, then take a fresh set.</p>
-        <div class="qa-score-btns"><button class="btn btn-primary" id="qa-retake">Take a new assessment →</button><a class="btn btn-ghost" href="#/dashboard">Back to dashboard</a></div>
+        <div class="qa-score-btns"><button class="btn btn-primary" id="qa-retake">Take a new assessment →</button><a class="btn btn-ghost" href="/dashboard">Back to dashboard</a></div>
       </div>
     </div>
     <h2 class="shell-h" style="margin-top:2rem">Review &amp; explanations</h2>
@@ -1889,7 +1889,7 @@ function skeletonFor(route){
   return `<div class="wrap"><div class="center-txt mt-16"><div class="skel skel-title" style="margin:0 auto 1rem;width:42%"></div><div class="skel skel-line w-60" style="margin:.5rem auto"></div><div class="skel skel-line w-40" style="margin:.5rem auto"></div></div><div class="panel mt-12"><div class="skel skel-line w-100"></div><div class="skel skel-line w-100"></div><div class="skel skel-line w-80"></div></div></div>`;
 }
 async function go(){
-  const hash=location.hash||"#/";const parts=hash.replace(/^#\//,"").split("/");const route=parts[0]||"";
+  const parts=(location.pathname||"/").replace(/^\/+|\/+$/g,"").split("/").filter(Boolean).map(s=>{try{return decodeURIComponent(s);}catch(e){return s;}});const route=parts[0]||"";
   if(_heroTimer){clearInterval(_heroTimer);_heroTimer=null;}
   if(_assessTimer && route!=="assessment"){stopAssessTimer();} // leaving the assessment cancels its clock
   window.scrollTo(0,0);
@@ -2049,6 +2049,26 @@ function startCountdown(){
   window._cdInt=setInterval(tick, REDUCED?30000:1000);
 }
 
-window.addEventListener("hashchange",go);
+// ---- Clean-URL routing (History API) ----
+// Programmatic navigation used across the app (replaces the old navigate("/…")).
+function navigate(path){
+  if(!path)path="/";
+  if(path.charAt(0)!=="/")path="/"+path;
+  if(path!==location.pathname){history.pushState(null,"",path);}
+  window.scrollTo(0,0);
+  go();
+}
+// Intercept clicks on internal links so navigation stays a single-page transition.
+document.addEventListener("click",e=>{
+  if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+  const a=e.target.closest("a");
+  if(!a)return;
+  const href=a.getAttribute("href");
+  if(!href||href.charAt(0)!=="/"||href.charAt(1)==="/")return;      // only same-origin absolute paths
+  if(a.target==="_blank"||a.hasAttribute("download")||a.getAttribute("rel")==="external")return;
+  e.preventDefault();
+  navigate(href);
+});
+window.addEventListener("popstate",()=>{window.scrollTo(0,0);go();});
 (async()=>{await loadContent();await renderHeader();renderFooter();initGlobalUI();await go();})();
 

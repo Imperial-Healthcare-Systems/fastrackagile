@@ -61,7 +61,7 @@ export const MARKUP = `
   <div class="sc-copy"><b>Ready to switch into IT?</b><span>Register free · seats filling for the next cohort</span></div>
   <div class="sc-actions">
     <a class="btn btn-ghost btn-sm" href="https://wa.me/919966080123" target="_blank" rel="noopener">WhatsApp</a>
-    <a class="btn btn-primary btn-sm" href="#/login">Register free →</a>
+    <a class="btn btn-primary btn-sm" href="/login">Register free →</a>
   </div>
 </div>
 `;
