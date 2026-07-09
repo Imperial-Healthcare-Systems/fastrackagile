@@ -728,10 +728,10 @@ function viewHome(){
         <h1 class="anim-2">${txt("home_hero_title","Break into IT as a <em>Scrum Master</em> — no coding required.")}</h1>
         <p class="lede anim-3">${txt("home_hero_lede","Practical, live Agile and Scrum training with Jira simulations, interview prep, and personal mentorship from Ram — built for people switching from non-tech careers.")}</p>
         <div class="hero2-cta anim-4">
-          <a class="btn btn-primary" href="#/courses">Register free →</a>
-          <a class="btn btn-ghost btn-on-dark" href="#/courses">See the programs</a>
+          <a class="btn btn-primary" href="#/courses">Register Now →</a>
+          <a class="btn btn-ghost btn-on-dark" href="#/courses">Programs</a>
         </div>
-        <div class="hero2-ticks anim-4"><span><svg class="ico tk" aria-hidden="true"><use href="#i-check"/></svg> Free career call</span><span><svg class="ico tk" aria-hidden="true"><use href="#i-check"/></svg> Online &amp; in-person</span><span><svg class="ico tk" aria-hidden="true"><use href="#i-check"/></svg> Placement support</span></div>
+        <div class="hero2-ticks anim-4"><span><svg class="ico tk" aria-hidden="true"><use href="#i-check"/></svg> Online &amp; In-Person</span><span><svg class="ico tk" aria-hidden="true"><use href="#i-check"/></svg> Placement Support</span></div>
       </div>
     </div>
     <div class="hb-dots" id="hg-dots">${HERO_PHOTOS.map((_,i)=>`<button class="hg-dot${i===0?' on':''}" data-i="${i}" aria-label="Show photo ${i+1}"></button>`).join("")}</div>
