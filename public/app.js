@@ -724,7 +724,7 @@ function viewHome(){
     <div class="hb-scrim"></div>
     <div class="wrap hb-inner">
       <div class="hero2-copy">
-        <span class="eyebrow anim-1">Only for Professionals Seeking a Career Switch</span>
+        <span class="eyebrow anim-1" style="text-transform:none;letter-spacing:.04em">Only for Professionals Seeking a Career Switch</span>
         <h1 class="anim-2">${txt("home_hero_title","Break into IT as a <em>Scrum Master</em> — no coding required.")}</h1>
         <p class="lede anim-3">${txt("home_hero_lede","Practical, live Agile and Scrum training with Jira simulations, interview prep, and personal mentorship from Ram — built for people switching from non-tech careers.")}</p>
         <div class="hero2-cta anim-4">
