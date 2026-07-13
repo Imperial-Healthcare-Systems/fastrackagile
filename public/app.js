@@ -45,7 +45,7 @@ const MODE = supabase ? "live" : "demo";
 const COURSES = [
  {id:"c1",slug:"practical-scrum-launchpad-weekday",title:"Practical Scrum Launchpad (Weekday)",subtitle:"Deep Diving into Scrum",mode:"Online",duration:"1 Month",schedule:"Mon–Fri · 6:45–8:15 AM IST (90 min)",summary:"Move beyond theory with real-world Scrum Master skills — an end-to-end roadmap from Scrum fundamentals to interview readiness. Covers Agile, Scrum, Kanban, SAFe, Jira and Confluence through a unique 4-phase model: learn, practice on a 2-week Jira sprint simulation, then get hired with guaranteed mock interviews."},
  {id:"c2",slug:"practical-scrum-launchpad-weekend",title:"Practical Scrum Launchpad (Weekend)",subtitle:"Weekend Classes",mode:"Online",duration:"90 Days",schedule:"Sat & Sun · 8:30–10:30 AM IST",summary:"The full Launchpad program for working professionals who can only train on weekends. Learn Scrum Master skills in focused 2.5-hour Saturday & Sunday sessions — Agile, Scrum, Kanban, SAFe, Jira and Confluence with real-time examples, a hands-on Jira sprint simulation and guaranteed mock interviews — without disturbing your current job."},
- {id:"c3",slug:"practical-scrum-interview-mastery",title:"Practical Scrum Interview Mastery",subtitle:"Mock Practice Bootcamp",mode:"Online",duration:"1 Week",schedule:"Mon–Fri · 10:15–11:30 AM IST",summary:"A focused bootcamp for trained professionals who know the theory but freeze in interviews. Real-time Scrum Master interview simulation with daily live practice, situational and behavioural questions, and structured feedback — so you walk in confident and convert interviews into offers."},
+ {id:"c3",slug:"practical-scrum-interview-mastery",title:"Practical Scrum Interview Mastery",subtitle:"Mock Practice Bootcamp",mode:"Online",duration:"1 Week",schedule:"Mon–Fri · 10 AM–12:30 PM IST",summary:"A focused bootcamp for trained professionals who know the theory but freeze in interviews. Real-time Scrum Master interview simulation with daily live practice, situational and behavioural questions, and structured feedback — so you walk in confident and convert interviews into offers."},
  {id:"c4",slug:"scrum-certification-program",title:"Scrum Certification Program",subtitle:"Get Global Certification from ScrumStudy",mode:"Offline",duration:"2 Days",schedule:"2 Days · 10 AM–6 PM IST",summary:"An in-room, instructor-led workshop leading to a globally valid ScrumStudy Scrum Master certification (valid 3 years). Face-to-face practical learning with agile games, team collaboration and mock practice — built for working professionals transitioning into or growing within Agile roles."},
  {id:"c5",slug:"scrum-growth-mentorship",title:"Scrum Growth Mentorship (On Job Support)",subtitle:"Only for pre-qualified professionals",mode:"Online",duration:"30 Days",schedule:"Flexible timings",summary:"A personal, high-impact mentorship for pre-qualified professionals — 10 dedicated 1:1 sessions with an expert mentor, assignment-based learning and focused skill development. Starts with an evaluation call, then customised coaching to grow into and beyond the Scrum Master role."},
  {id:"c6",slug:"scrum-smartpath",title:"Scrum SmartPath",subtitle:"Self-Learning Module",mode:"Online",duration:"365 Days",schedule:"Self-paced",summary:"A 100% self-paced module with a full year of access — learn Scrum on your own schedule using recorded sessions from completed batches, plus lifetime access to weekly live support sessions for your queries and interview prep. The most affordable way into Scrum, with 350+ member community access."}
@@ -89,19 +89,21 @@ const SUCCESS_STORIES=[
   {n:"Ravi",b:"Batch 14",role:"Scrum Master",co:"Ascent Health Care",t:"After completing the Scrum Training, I got placed as a Scrum Master in Ascent Health Care, Hyderabad — and landed my dream job with a high package! The best part was you never hesitated in clearing doubts and accepting calls 24/7 whenever I needed your assistance."},
   {n:"Priyanka",b:"Batch 19",role:"Scrum Master",co:"Verizon",t:"I have accepted an offer as a Scrum Master at Verizon. A big thank you to Ram for the excellent training sessions. Your way of teaching made everything so much easier to understand, and your support throughout my interview process is much appreciated."},
   {n:"Tusshar",b:"Batch 21",role:"Scrum Master",co:"",t:"I've officially been placed as a Scrum Master! This achievement wouldn't have been possible without the constant guidance, support and mentorship of Ram. Thank you, sir, for being a true guru and showing me the right path. Your insights, patience and belief in me played a huge role in this journey."},
-  {n:"Swathi (Shashi)",b:"Scrum Batch",role:"Scrum Master",co:"Infosys / Innova",t:"I'm glad to inform you that I have got 2 offers — Innova Software Solutions and Infosys. I'm really glad to be trained with Ram because of his detailed and incremental approach towards the concepts and the practical aspects that helped me get through the interviews."},
+  {n:"Swathi",b:"Scrum Batch",role:"Scrum Master",co:"Infosys / Innova",t:"I'm glad to inform you that I have got 2 offers — Innova Software Solutions and Infosys. I'm really glad to be trained with Ram because of his detailed and incremental approach towards the concepts and the practical aspects that helped me get through the interviews."},
   {n:"Rajesh",b:"Batch 17",role:"Scrum Master",co:"Amgen",t:"I've accepted an offer as a Scrum Master with Amgen, Hyderabad. A huge thank you to Ram for the guidance and support in helping me land this job. Your mentorship and encouragement made all the difference — grateful for your efforts in shaping my success!"},
-  {n:"Akbar Baig",b:"Batch 17",role:"Lead Scrum Master",co:"Franklin Templeton",t:"Very happy to share the exciting news of the offer I got as a Lead Scrum Master role in Franklin Templeton. Special thanks to Ram for his dedication and support — the training, mentorship, meetups and regular mock interview sessions played a crucial role in building my skills and confidence."},
+  {n:"Akbar",b:"Batch 17",role:"Lead Scrum Master",co:"Franklin Templeton",t:"Very happy to share the exciting news of the offer I got as a Lead Scrum Master role in Franklin Templeton. Special thanks to Ram for his dedication and support — the training, mentorship, meetups and regular mock interview sessions played a crucial role in building my skills and confidence."},
   {n:"Abhilash",b:"Batch 16",role:"Scrum Master",co:"Infosys",t:"I received an offer and have joined Infosys as a Scrum Master. A few months ago, I lost my job and was under immense stress. Ram's support and confidence-boosting advice played a crucial role in helping me secure this new role. The interview support sessions were incredibly beneficial."},
   {n:"Shwetha",b:"Batch 7",role:"Scrum Master",co:"Fidelity National",t:"I got offers from 4 companies and finally joined Fidelity National Finance — this is all because of your help and support. Thank you, Ram!"},
-  {n:"Divya Khandelwal",b:"NHT IDR",role:"Scrum Master",co:"Colabera",t:"I was working with Colabera as a Scrum Master for a top consumer healthcare client. Out of 10 team members, only 2 of us were offered full-time roles, and I'm happy to be one of them! Big thanks to Ram for the amazing Scrum training — it truly made a difference."},
+  {n:"Divya",b:"NHT IDR",role:"Scrum Master",co:"Colabera",t:"I was working with Colabera as a Scrum Master for a top consumer healthcare client. Out of 10 team members, only 2 of us were offered full-time roles, and I'm happy to be one of them! Big thanks to Ram for the amazing Scrum training — it truly made a difference."},
   {n:"Tanwisha",b:"NHT 16",role:"Scrum Master",co:"Koenig Solutions",t:"I'm pleased to inform you all that I got my 2nd offer from Koenig Solutions as a Scrum Master. Again, thank you Ram for your support and efforts."},
   {n:"Jayachandra",b:"Scrum Batch",role:"Scrum Master",co:"F1Studioz",t:"I've accepted an offer from F1Studioz. A big thanks to Ram — he laid the foundation for my journey. He was not just a trainer but a mentor, a guide, and a whole package of positivity. I feel lucky to have had him as my trainer."},
   {n:"Dharma",b:"Batch 6",role:"Scrum Master",co:"",t:"I'm happy to share that I got my first offer and got placed in one of my dream organizations. Loads of thanks to Balram, who helped me transform my career into the IT domain as a Scrum Master."},
   {n:"Lavina",b:"NHT",role:"Scrum Master",co:"",t:"I have bagged 2 offer letters and will be joining one company next month. All the credit goes to Balram — the kind of belief he showed in me and the efforts he put in have finally reaped results. Thank you, Ram!"},
   {n:"Ruth",b:"BOA",role:"Scrum Master",co:"Infosys",t:"Received the offer letter from Infosys! A big thanks to Ram, who made me think differently and had complete trust in me. Thank you, Balram."},
-  {n:"Sameera Shaik",b:"Community",role:"Senior Project Manager",co:"Jocata",t:"I got placed in a product-based company named Jocata as a Senior Project Manager. I express my sincere gratitude to Ram, whose motivation gave me so much confidence. Each time I faced challenges, he was always there to guide and push me to reach my full potential."},
-  {n:"Veda",b:"Batch 8",role:"Learner",co:"",t:"Ram, you are my Scrum Guruji. You helped me through and through with all my doubts. The kind of faith you had in me gave me hope, and the patience you showed me kept me going. Thank you so much for the support."}
+  {n:"Sameera",b:"Community",role:"Senior Project Manager",co:"Jocata",t:"I got placed in a product-based company named Jocata as a Senior Project Manager. I express my sincere gratitude to Ram, whose motivation gave me so much confidence. Each time I faced challenges, he was always there to guide and push me to reach my full potential."},
+  {n:"Veda",b:"Batch 8",role:"Learner",co:"",t:"Ram, you are my Scrum Guruji. You helped me through and through with all my doubts. The kind of faith you had in me gave me hope, and the patience you showed me kept me going. Thank you so much for the support."},
+  {n:"Ipsita",b:"Batch 8",role:"Learner",co:"",t:"After not getting calls for more than a month, I was truly losing hope. But your words motivated me again — and there's no doubt that Ram is a great trainer."},
+  {n:"Praveen",b:"Scrum Batch",role:"Learner",co:"",t:"Dear Ram, thank you for the excellent training on Agile and Scrum. Your clear explanations and practical approach made the concepts easy to understand and apply. I truly appreciate your guidance and the valuable knowledge you shared."}
 ];
 /* Real student & meetup photos (sidecar files in ./assets) */
 /* Real student & meetup photos — embedded as base64 (self-contained) */
@@ -575,13 +577,13 @@ async function renderHeader(){
    </div>
    <header><div class="wrap nav">
      <a class="brand-logo" href="/" aria-label="Fastrack Agile"><img src="${A.LOGO_MARK}" class="logo-mark" alt=""><img src="${A.LOGO_TEXT}" class="logo-text" alt="Fastrack Agile"></a>
-     <nav class="navlinks"><a href="/">Home</a><a href="/about">About us</a><a href="/courses">Programs</a><a href="/calendar">Training Calendar</a><a href="/resources">Resources</a><a href="/stories">Success Stories</a><a href="/contact">Contact</a></nav>
+     <nav class="navlinks"><a href="/">Home</a><a href="/about">About Us</a><a href="/courses">Programs</a><a href="/calendar">Training Calendar</a><a href="/resources">Resources</a><a href="/stories">Success Stories</a><a href="/contact">Contact</a></nav>
      <div class="nav-cta">${auth}</div>
      <a class="nav-book" href="${CALENDLY_URL}" data-book-call target="_blank" rel="noopener"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg> Book a Call</a>
      <button class="menu-btn" id="menu-btn" aria-label="Menu">☰</button>
    </div>
    <div class="mobile-drawer" id="mobile-drawer">
-     <a href="/">Home</a><a href="/about">About us</a><a href="/courses">Programs</a><a href="/calendar">Training Calendar</a><a href="/resources">Resources</a><a href="/stories">Success Stories</a><a href="/contact">Contact</a>
+     <a href="/">Home</a><a href="/about">About Us</a><a href="/courses">Programs</a><a href="/calendar">Training Calendar</a><a href="/resources">Resources</a><a href="/stories">Success Stories</a><a href="/contact">Contact</a>
      <div class="divider"></div>
      ${prof?`<a href="/dashboard">My Dashboard</a>${isAdmin?`<a href="/admin">Admin Console</a>`:""}<a href="javascript:void(0)" id="m-signout">Sign out</a>`:`<a href="/contact" class="accent">Contact us</a><span class="auth-later" hidden><a href="/login">Log in</a><a href="/login" class="accent">Register free</a></span>`}
    </div></header>`;
@@ -635,7 +637,7 @@ function renderFooter(){
 
         <div class="foot-col">
           <h4>Explore</h4><div class="h4-rule"></div>
-          <a class="foot-link" href="/about"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg> About us</a>
+          <a class="foot-link" href="/about"><svg class="ico" aria-hidden="true"><use href="#i-users"/></svg> About Us</a>
           <a class="foot-link" href="/courses"><svg class="ico" aria-hidden="true"><use href="#i-book"/></svg> Courses</a>
           <a class="foot-link" href="/calendar"><svg class="ico" aria-hidden="true"><use href="#i-cal"/></svg> Training Calendar</a>
           <a class="foot-link" href="/resources"><svg class="ico" aria-hidden="true"><use href="#i-folder"/></svg> Resources</a>
@@ -766,8 +768,8 @@ function viewHome(){
   <section class="sec-block"><div class="wrap">
     <div class="sec-head reveal"><span class="eyebrow">The biggest blocker</span><h2>You think you need to code to get into IT. You don't.</h2><p>Most non-IT professionals talk themselves out of a Scrum Master career before they start. Here's the truth about what the role actually needs.</p></div>
     <div class="myth-grid">
-      <div class="myth-card bad reveal r-left"><span class="tag">The myth</span><h3>Common myths about becoming a Scrum Master.</h3><ul>${["IT isn't for people like me.","I need to learn programming before becoming a Scrum Master.","I need a Computer Science or Engineering degree.","Companies only hire people with prior Scrum Master experience.","My non-IT experience has no value in Agile.","I'm too old or it's too late to switch careers.","A Scrum certification alone is enough to get hired.","I need years of technical experience to become a Scrum Master.","Scrum Master interviews are highly technical and coding-based.","Without an IT background, I can't compete with experienced candidates.","Only developers can build a successful career in Agile.","Career transition to Scrum Master is nearly impossible."].map(t=>`<li><span class="mk">✕</span> ${t}</li>`).join("")}</ul></div>
-      <div class="myth-card good reveal r-right"><span class="tag">The reality</span><h3>The reality.</h3><ul>${["Scrum welcomes professionals from diverse backgrounds — not just IT.","Programming or coding is not required for a Scrum Master role.","Communication, facilitation, leadership and problem-solving matter more than your degree.","Your previous experience gives you transferable skills that organizations value.","Certifications build knowledge, but practical training builds confidence.","Hands-on sprint simulations and real-time Scrum activities prepare you for actual project situations.","Working through real interview scenarios and case studies helps you answer situational questions naturally.","The more you practice articulating Scrum concepts, the more your confidence shows in interviews.","Interviewers look for practical thinking and problem-solving — not memorized definitions.","Consistent practice, mock interviews and expert feedback significantly improve your chances of getting hired."].map(t=>`<li><svg class="ico mk" aria-hidden="true"><use href="#i-check"/></svg> ${t}</li>`).join("")}</ul></div>
+      <div class="myth-card bad reveal r-left"><span class="tag">The myth</span><h3>Common Myths About Becoming a Scrum Master</h3><ul>${["IT isn't for people like me.","I need to learn programming before becoming a Scrum Master.","I need a Computer Science or Engineering degree.","Companies only hire people with prior Scrum Master experience.","My non-IT experience has no value in Agile.","I'm too old or it's too late to switch careers.","A Scrum certification alone is enough to get hired.","I need years of technical experience to become a Scrum Master.","Scrum Master interviews are highly technical and coding-based.","Without an IT background, I can't compete with experienced candidates.","Only developers can build a successful career in Agile.","Career transition to Scrum Master is nearly impossible."].map(t=>`<li><span class="mk">✕</span> ${t}</li>`).join("")}</ul></div>
+      <div class="myth-card good reveal r-right"><span class="tag">The reality</span><h3>The Reality of Becoming a Scrum Master</h3><ul>${["Scrum welcomes professionals from diverse backgrounds — not just IT.","Programming or coding is not required for a Scrum Master role.","Communication, facilitation, leadership and problem-solving matter more than your degree.","Your previous experience gives you transferable skills that organizations value.","Certifications build knowledge, but practical training builds confidence.","Hands-on sprint simulations and real-time Scrum activities prepare you for actual project situations.","Working through real interview scenarios and case studies helps you answer situational questions naturally.","The more you practice articulating Scrum concepts, the more your confidence shows in interviews.","Interviewers look for practical thinking and problem-solving — not memorized definitions.","Consistent practice, mock interviews and expert feedback significantly improve your chances of getting hired."].map(t=>`<li><svg class="ico mk" aria-hidden="true"><use href="#i-check"/></svg> ${t}</li>`).join("")}</ul></div>
     </div>
   </div></section>
 
@@ -802,9 +804,9 @@ function viewHome(){
     <div class="sec-head center reveal"><span class="eyebrow">Real people, real switches</span><h2>The faces behind the success stories.</h2><p>These are actual learners who walked in from non-IT backgrounds and walked out into Scrum Master roles — photographed at our Gachibowli center.</p></div>
     <div class="story-wall reveal" data-stagger>${STORY_PHOTOS.map(storyCard).join("")}</div>
     <div class="story-stat-row reveal" data-stagger>
-      <div class="story-stat"><b><span class="counter" data-count="300" data-suffix="+">0</span></b><span>Learners mentored</span></div>
+      <div class="story-stat"><b><span class="counter" data-count="350" data-suffix="+">0</span></b><span>Learners mentored</span></div>
       <div class="story-stat"><b><span class="counter" data-count="200" data-suffix="+">0</span></b><span>Career switches</span></div>
-      <div class="story-stat"><b><span class="counter" data-count="12" data-suffix="+">0</span></b><span>Years mentoring</span></div>
+      <div class="story-stat"><b><span class="counter" data-count="17" data-suffix="+">0</span></b><span>Years Experience</span></div>
     </div>
     <p class="story-note reveal">Every photo here is a real Fastrack Agile graduate. Your story could be next.</p>
   </div></section>
@@ -847,7 +849,7 @@ function viewHome(){
   <section class="sec-block final2"><div class="wrap reveal r-scale">
     <h2>Your first step into IT starts with one conversation.</h2>
     <p>Register free, book a no-pressure call, and we'll map out your transition — honestly.</p>
-    <div class="hero2-cta" style="justify-content:center"><a class="btn btn-ink" href="/courses">Register free →</a><a class="btn btn-ghost" href="https://wa.me/${WHATSAPP}" style="border-color:var(--ink)">Chat on WhatsApp</a></div>
+    <div class="hero2-cta" style="justify-content:center"><a class="btn btn-ink" href="/courses">Register Now →</a><a class="btn btn-ghost" href="https://wa.me/${WHATSAPP}" style="border-color:var(--ink)">Chat on WhatsApp</a></div>
   </div></section>`;
 }
 
@@ -864,7 +866,7 @@ async function viewCourses(){
     </div></article>`;
   return `<section class="page-head wrap reveal"><span class="eyebrow">Programs</span>
     <h1>Six ways to get into a Scrum Master career.</h1>
-    <p>Every program is practical, mentor-led, and built for people switching in from non-IT roles. Pick the one that fits your schedule and goals — all fees are exclusive of GST.</p></section>
+    <p style="max-width:none;font-size:1rem">Every program is hands-on, mentor-led, and designed to help experienced professionals build practical Agile and Scrum expertise. <strong>A minimum of 4 years of professional work experience in any domain — IT or non-IT — is mandatory</strong> to enroll. Whether you're an IT professional looking to advance your career or a non-IT professional transitioning into Agile, our programs provide the knowledge, mentorship, and real-world guidance needed to become a successful Scrum Master. Choose the program that best fits your schedule and career goals.</p></section>
     <div class="wrap"><div class="course-grid reveal" data-stagger>${cs.map(card).join("")}</div></div>`;
 }
 
@@ -982,7 +984,7 @@ function viewAbout(){
     </section>
 
     <section style="padding:44px 0 84px">
-      <div class="sec-head center reveal"><span class="eyebrow">The community</span><h2 style="font-size:1.9rem">350+ learners, and counting.</h2><p>Meetups and graduation celebrations at our Gachibowli center.</p></div>
+      <div class="sec-head center reveal"><span class="eyebrow">The community</span><h2 style="font-size:1.9rem">350+ learners, and counting.</h2><p>Meetups, Networking &amp; Success Celebrations at Fastrack Agile Training Center, Gachibowli, Hyderabad.</p></div>
       <div class="ggrid reveal mt-8" data-stagger>
         ${HERO_PHOTOS.slice(0,9).map((src,i)=>`<div class="gtile ${i===0?'feat':'wide'}" data-d="${i}"><img loading="lazy" decoding="async" src="${src}" alt="Fastrack Agile community meetup, Hyderabad" width="1000" height="563"></div>`).join("")}
       </div>
@@ -1107,7 +1109,7 @@ function viewCalendar(){
   const batches=[
     {course:"Practical Scrum Launchpad (Weekday)",slug:"practical-scrum-launchpad-weekday",start:"6 Jul 2026",time:"Mon–Fri · 6:45–8:15 AM IST",mode:"Online"},
     {course:"Practical Scrum Launchpad (Weekend)",slug:"practical-scrum-launchpad-weekend",start:"12 Jul 2026",time:"Sat & Sun · 8:30 AM IST",mode:"Online"},
-    {course:"Practical Scrum Interview Mastery",slug:"practical-scrum-interview-mastery",start:"14 Jul 2026",time:"Mon–Fri · 10:15 AM IST",mode:"Online"},
+    {course:"Practical Scrum Interview Mastery",slug:"practical-scrum-interview-mastery",start:"14 Jul 2026",time:"Mon–Fri · 10 AM–12:30 PM IST",mode:"Online"},
     {course:"Scrum Certification Program (ScrumStudy)",slug:"scrum-certification-program",start:"26–27 Jul 2026",time:"10 AM–6 PM IST",mode:"In Person/Offline"},
     {course:"Scrum Growth Mentorship (On Job Support)",slug:"scrum-growth-mentorship",start:"Rolling",time:"Flexible",mode:"Online"}
   ];
