@@ -787,7 +787,7 @@ function viewHome(){
   <!-- PROGRAMS PREVIEW -->
   <section class="sec-block tint"><div class="wrap">
     <div class="sec-head center reveal"><span class="eyebrow">Programs</span><h2>Choose your path into Scrum.</h2><p>Six practical programs — weekday, weekend, interview bootcamp, certification, mentorship, and self-paced.</p></div>
-    <div class="prog-urgency reveal"><span class="pu-live"><span class="ld"></span> Enrolling now</span><span>Next weekday cohort closes in <b id="prog-countdown">soon</b></span><span><b>6</b> of 12 seats left</span></div>
+    <div class="prog-urgency reveal"><span class="pu-live"><span class="ld"></span> Enrolling now</span><span>Next weekday cohort closes in <b id="prog-countdown">soon</b></span></div>
     <div class="prog-grid reveal" data-stagger>${prog}</div>
     <div class="center-txt mt-8"><a class="btn btn-primary" href="/courses">View all 6 programs →</a></div>
   </div></section>
